@@ -17,7 +17,7 @@ function show (title,poster_path,overview){
 
 function dataHandler(req, res){
     let result = [];
-    show.data.forEach((value) => {
+    myData.data.forEach((value) => {
         let myShow = new show(value.title,value.poster_path, value.overview);
         result.push(myShow);
     });

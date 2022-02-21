@@ -1,4 +1,4 @@
-# Movies-Library
+# Movies-Library 1.0.0
 
 **Author Name**: sultan kanaan
 
@@ -10,7 +10,13 @@
 we are in the  Movies Library project
 
 ## Getting Started
-http://localhost:3000
+- git clone git@github.com:sultan-kanaan/Movies-Library.git **in your Terminal**.
+- npm install express.
+- Code.
+- Use Postman and 
+http://localhost:3000 **to home page**
+http://localhost:3000/favorite **to favorite page**
+
 
 ## Project Features
 -Home Page Endpoint
