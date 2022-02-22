@@ -6,6 +6,9 @@ const app = express();
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
+const pg = require("pg");
+const DATABASE_URL = process.env.DATABASE_URL;
+const client = new pg.Client(DATABASE_URL);
 const APIKEY = process.env.APIKEY;
 
 app.get('/', dataHandler);
@@ -14,7 +17,9 @@ app.get('/trending', trendingPage),
 app.get('/nowplaying',movieNow_playing);
 app.get('/toprated',movieTop_rated)
 app.get('/search', searchPage),
- app.use("*", notFoundHandler);
+app.post("/addFavorat", addFavorat);
+app.get("/getFavorat", getFavorat)
+app.use("*", notFoundHandler);
 app.use(errorHandler);
 
 function show(id, title, release_date, poster_path, overview) {
@@ -103,6 +108,29 @@ function movieTop_rated(req, res) {
         });
 
 }
+function addFavorat(req,res){
+    let movie = req.body;
+   const sql = `INSERT INTO favMovies( title,release_date, poster_path, overview,comment) VALUES($1, $2, $3, $4, $5)RETURNING * ;`
+   let values = [movie.title,movie.release_date, movie.poster_path, movie.overview,movie.comment];
+  
+    client.query(sql, values).then((data) => {
+       
+        return res.status(201).json(data.rows);
+    }).catch(error => {
+        errorHandler(error, req, res);
+    })
+  };
+  function getFavorat(req, res){
+
+    const sql = `SELECT * FROM favMovies`;
+  
+    client.query(sql).then(data => {
+        return res.status(200).json(data.rows);
+    }).catch(error => {
+        errorHandler(error, req,res);
+    })
+  }
+  
 
 
 
