@@ -11,8 +11,10 @@ const APIKEY = process.env.APIKEY;
 app.get('/', dataHandler);
 app.get('/favorite', favoritePage);
 app.get('/trending', trendingPage),
-    app.get('/search', searchPage),
-    app.use("*", notFoundHandler);
+app.get('/nowplaying',movieNow_playing);
+app.get('/toprated',movieTop_rated)
+app.get('/search', searchPage),
+ app.use("*", notFoundHandler);
 app.use(errorHandler);
 
 function show(id, title, release_date, poster_path, overview) {
@@ -69,6 +71,40 @@ function searchPage(req, res) {
 
         });
 }
+
+function movieNow_playing(req, res) {
+    let result = [];
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${APIKEY}&language=en-US&page=1`)
+        .then(value => {
+            value.data.results.map(value => {
+                let mymovis = new show(value.id || "N/A", value.title || "N/A", value.release_date || "N/A", value.poster_path || "N/A", value.overview || "N/A");
+                result.push(mymovis)
+            })
+            return res.status(200).json(result);
+        }).catch(error => {
+            errorHandler(error, req, res);
+
+        });
+
+}
+
+function movieTop_rated(req, res) {
+    let result = [];
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${APIKEY}&language=en-US&page=1`)
+        .then(value => {
+            value.data.results.map(value => {
+                let mymovis = new show(value.id || "N/A", value.title || "N/A", value.release_date || "N/A", value.poster_path || "N/A", value.overview || "N/A");
+                result.push(mymovis)
+            })
+            return res.status(200).json(result);
+        }).catch(error => {
+            errorHandler(error, req, res);
+
+        });
+
+}
+
+
 
 function notFoundHandler(req, res) {
 
