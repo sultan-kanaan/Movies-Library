@@ -1,11 +1,9 @@
-DROP TABLE IF EXISTS favMovies;
+DROP TABLE IF EXISTS postgres;
 
-CREATE TABLE IF NOT EXISTS favMovies(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
-    release_date VARCHAR(10000),
-    poster_path VARCHAR(10000),
-    overview VARCHAR(255),
-    comment VARCHAR(255)
-
-)
+CREATE TABLE IF NOT EXISTS postgres(
+id SERIAL PRIMARY KEY,
+release_date DATE,
+title VARCHAR(1000),
+poster_path VARCHAR(1000),
+overview VARCHAR(10000),
+);

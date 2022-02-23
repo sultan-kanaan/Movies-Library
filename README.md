@@ -20,6 +20,8 @@ we are in the  Movies Library project
  4. http://localhost:3000/trending **to trending page**
  5. http://localhost:3000/toprated **to top rated page**
  6. http://localhost:3000/nowplaying **to now playing page**
+ 7. http://localhost:3000/addFavorat and post **to add the favorat movis**
+ 8. http://localhost:3000getFavorat **to show the favorat movis**
 
 ## Project Features
 - Home Page Endpoint
@@ -29,3 +31,5 @@ we are in the  Movies Library project
 - trending end point
 - search end point
 - page not found error
+- add the favorat movis
+- show the favorat movis
