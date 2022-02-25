@@ -14,6 +14,7 @@ const client = new pg.Client({
     ssl: { rejectUnauthorized: false }
 });
 const APIKEY = process.env.APIKEY;
+const PORT = process.env.PORT;
 
 app.get('/', dataHandler);
 app.get('/favorite', favoritePage);
