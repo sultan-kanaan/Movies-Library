@@ -13,14 +13,14 @@ const APIKEY = process.env.APIKEY;
 
 app.get('/', dataHandler);
 app.get('/favorite', favoritePage);
-app.get('/trending', trendingPage),
-    app.get('/nowplaying', movieNow_playing);
-app.get('/toprated', movieTop_rated)
-app.get('/search', searchPage),
-    app.post("/addFavorat", addFavorat);
-app.get("/getFavorat", getFavorat)
+app.get('/trending', trendingPage);
+app.get('/nowplaying', movieNow_playing);
+app.get('/toprated', movieTop_rated);
+app.get('/search', searchPage);
+app.post('/addFavorat', addFavorat);
+app.get("/getFavorat", getFavorat);
 app.put("/updateFavmovie/:id", updateFavmovie);
-app.delete("/deleteFavmovie/:id", deleteFavmovie)
+app.delete("/deleteFavmovie/:id", deleteFavmovie);
 app.get('/getMovie/:id', getMovieById);
 app.use("*", notFoundHandler);
 app.use(errorHandler);
@@ -62,9 +62,7 @@ function trendingPage(req, res) {
         });
 };
 function searchPage(req, res) {
-    //  http://localhost3000/searchSpider-Man
     let searchquery = req.query.search;
-    // console.log(req.query.search);
     let result = [];
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${searchquery}`)
         .then(value => {
@@ -114,7 +112,7 @@ function movieTop_rated(req, res) {
 function addFavorat(req, res) {
     let movie = req.body;
     const sql = `INSERT INTO postgres( title,release_date, poster_path, overview,comment) VALUES($1, $2, $3, $4,$5)RETURNING * ;`
-    let values = [movie.title, movie.release_date, movie.poster_path, movie.overview,movie.comment];
+    let values = [movie.title, movie.release_date, movie.poster_path, movie.overview, movie.comment];
 
     client.query(sql, values).then((data) => {
 
