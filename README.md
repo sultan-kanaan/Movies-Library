@@ -22,6 +22,9 @@ we are in the  Movies Library project
  6. http://localhost:3000/nowplaying **to now playing page**
  7. http://localhost:3000/addFavorat and post **to add the favorat movis**
  8. http://localhost:3000getFavorat **to show the favorat movis**
+ 9. http://localhost:3000updateFavmovie/:id **to update the favorat movis by id**
+ 10. http://localhost:3000deleteFavmovie/:id **to delete the favorat movis by id**
+ 11. http://localhost:3000getMovie/:id **to  get the favorat movis by id**
 
 ## Project Features
 - Home Page Endpoint
@@ -33,3 +36,6 @@ we are in the  Movies Library project
 - page not found error
 - add the favorat movis
 - show the favorat movis
+- update the favorat movis
+- delete the favorat movis
+- get the favorat movis by id 

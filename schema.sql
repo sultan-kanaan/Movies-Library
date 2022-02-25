@@ -6,4 +6,5 @@ release_date DATE,
 title VARCHAR(1000),
 poster_path VARCHAR(1000),
 overview VARCHAR(10000),
+comment VARCHAR(1000)
 );
