@@ -171,9 +171,6 @@ function getMovieById(req, res) {
         })
 
 }
-
-
-
 function notFoundHandler(req, res) {
 
     return res.status(404).send("Sorry, something went wrong");
