@@ -93,7 +93,6 @@ function movieNow_playing(req, res) {
         });
 
 }
-
 function movieTop_rated(req, res) {
     let result = [];
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${APIKEY}&language=en-US&page=1`)
@@ -105,7 +104,6 @@ function movieTop_rated(req, res) {
             return res.status(200).json(result);
         }).catch(error => {
             errorHandler(error, req, res);
-
         });
 
 }
